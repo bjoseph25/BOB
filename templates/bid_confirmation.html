@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bid Confirmation</title>
+</head>
+<body>
+    <h2>Bid Confirmation</h2>
+    <p>Your bid of ${{ bid_amount }} has been successfully placed for the product "{{ product['name'] }}".</p>
+    <p>Current Price: ${{ product['price'] }}</p>
+    <a href="{{ url_for('show_products') }}">Back to Products</a>
+</body>
+</html>
