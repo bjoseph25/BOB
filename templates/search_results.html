@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Results</title>
+</head>
+<body>
+    <h1>Search Results for "{{ query }}"</h1>
+
+    {% if results %}
+        <ul>
+        {% for item in results %}
+            <li>
+                <img src="{{ item.image_url }}" style="height: 50px;"><br>
+                <strong>{{ item.name }}</strong> - ${{ "%.2f"|format(item.price) }}<br>
+                {{ item.description }}
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No matching products found.</p>
+    {% endif %}
+
+    <a href="{{ url_for('home') }}">Back to Home</a>
+</body>
+</html>
