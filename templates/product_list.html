@@ -1,0 +1,73 @@
+<head>
+<style>
+		.product-list { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px; }
+        .product { border: 1px solid #ccc; padding: 10px; width: 200px; border-radius: 8px; }
+        .product img { width: 100%; height: auto; }
+        .product-name { font-weight: bold; margin-top: 10px; }
+        .price { color: green; margin-top: 5px; }
+        
+        .nav-buttons {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+   </style>
+ </head>
+ <body>
+<h2>Products</h2>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class="flashes">
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+<div class="nav-buttons">
+        <a href="{{url_for('login') }}">
+            <button type="submit">Login</button>
+        </a>
+        <a href="{{ url_for('home') }}">
+			<button type="button">Home</button>
+        </a>
+        <a href="{{ url_for('register') }}">
+		<button type="button">Register</button>
+		</a>
+		<a href="{{ url_for('logout') }}">
+		<button type="button">Logout</button>
+		</a>
+        {% if session['role'] == 'admin' %}
+    <a href="{{ url_for('add_products') }}">
+        <button type="submit">Add Product</button>
+    </a>
+{% endif %}
+
+        <a href="{{url_for('show_products') }}">
+            <button type="button">Products</button>
+        </a>
+    </div>
+{% if products %}
+        <div class="product-list">
+            {% for product in products %}
+                <div class="product">
+                    <img src="{{ product['image_url'] }}">
+                    <div class="product-name">{{ product['name'] }}</div>
+                    <div class="price">${{ "%.2f"|format(product['price']) }}</div>
+                    <div class="description">{{ product['description'] }}</div>
+
+                    <form action="{{ url_for('place_bid', item_id=product['id']) }}" method="POST">
+                        <input type="number" name="bid_amount" step="0.01" min="0" required>
+                        <button type="submit">Place Bid</button>
+                    </form>
+                </div>
+            {% endfor %}
+        </div>
+       
+    {% else %}
+        <p>No products available.</p>
+    {% endif %}
+</body>
+</html>
