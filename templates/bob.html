@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnB55MENXQHwf7osZohmO8Vl1wU-SvT3dkOw&s">
+    <title>BuyOrBid - Home</title>
+    <style>
+		<!--
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .header { display: flex; justify-content: space-between; align-items: center; }
+        .product-list { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px; }
+        .product { border: 1px solid #ccc; padding: 10px; width: 200px; border-radius: 8px; }
+        .product img { width: 100%; height: auto; }
+        .product-name { font-weight: bold; margin-top: 10px; }
+        .price { color: green; margin-top: 5px; }
+        
+        .nav-buttons {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+-->
+      * {margin: 0; padding: 0; box-sizing: border-box;}
+        body {font-family: Arial, sans-serif;}
+        .container {max-width: 900px; margin: 0 auto; padding: 20px;}
+        .header {display: flex; flex-direction: column; align-items: center; gap: 10px;}
+        
+    </style>
+</head>
+<body>
+   <div class="container">
+    <div class="header">
+    <form action="{{ url_for('search') }}" method="get">
+        <input type="text" name="query" placeholder="Search for items...">
+        <button type="submit">Search</button>
+    </form>
+
+    <div class="nav-buttons">
+        <a href="{{url_for('login') }}">
+            <button type="submit">Login</button>
+        </a>
+        <a href="{{ url_for('home') }}">
+			<button type="button">Home</button>
+        </a>
+        <a href="{{ url_for('register') }}">
+		<button type="button">Register</button>
+		</a>
+		<a href="{{ url_for('logout') }}">
+		<button type="button">Logout</button>
+		</a>
+        {% if session['role'] == 'admin' %}
+    <a href="{{ url_for('add_products') }}">
+        <button type="submit">Add Product</button>
+    </a>
+{% endif %}
+
+        <a href="{{url_for('show_products') }}">
+            <button type="button">Products</button>
+        </a>
+    </div>
+
+    
+    {% if user %}
+		<p style="text-align: right">Logged in as: {{ user }}</p>
+    {% endif %}
+    
+    <div class="product-list">
+        {% for product in products %}
+<div class="product">
+            <img src="{{ product.image_url }}">
+            <div class="product-name">{{ product.name }}</div>
+            <div class="price">${{ "%.2f"|format(product.price) }}</div>
+            <div class="description">{{ product.description }}</div>
+        </div>
+        {% else %}
+            <p>No products available.</p>
+        {% endfor %}
+    </div>
+
+</body>
+</html>
