@@ -1,4 +1,5 @@
-#BuyOrBid 🛒
+BuyOrBid 🛒
+
 BuyOrBid is an eBay-like online auction and shopping platform developed as a school project. The platform allows users to browse products, place bids, and purchase items instantly. Whether you're a buyer looking for deals or a seller trying to reach new customers, BuyOrBid brings the auction experience online.
 
 🔧 Project Description
