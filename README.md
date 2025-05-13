@@ -95,13 +95,8 @@ Open your browser and go to http://127.0.0.1:8000/
 (Insert screenshots of the homepage, product page, bidding interface, etc.)
 
 🧑‍💻 Team Members
-Alice Smith — Frontend Developer
-
-Bob Johnson — Backend Developer
-
-Carlos Davis — Full Stack & UI/UX
-
-Dana Lee — Project Manager & QA
+Brandon Joseph
+Kenneth Nyugen
 
 📚 Learning Outcomes
 Through this project, we gained experience in:
