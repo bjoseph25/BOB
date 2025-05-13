@@ -45,26 +45,7 @@ REST API (if applicable)
 
 Docker (optional)
 
-📂 Project Structure
-bash
-Copy
-Edit
-BuyOrBid/
-├── backend/
-│   ├── models/
-│   ├── views/
-│   └── urls.py
-├── frontend/
-│   ├── components/
-│   ├── pages/
-│   └── App.js
-├── static/
-│   └── css, images
-├── templates/
-│   └── HTML files
-├── db.sqlite3
-├── manage.py
-└── README.md
+
 🛠️ Setup Instructions
 Clone the repository
 
